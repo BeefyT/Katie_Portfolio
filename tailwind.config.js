@@ -347,6 +347,7 @@ module.exports = {
       DEFAULT: "1",
     },
     fontFamily: {
+      amatic: ['"Amatic SC"', "cursive"],
       sans: [
         "ui-sans-serif",
         "system-ui",
