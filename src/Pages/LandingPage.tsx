@@ -3,10 +3,21 @@ import banner from "../assets/images/image_13.jpg"
 import art1 from "../assets/images/image_1.jpg"
 import art2 from "../assets/images/image_7.jpg"
 import art3 from "../assets/images/image_6.jpg"
+import { useNavigate } from "react-router-dom"
 
 
 
 const LandingPage: React.FunctionComponent = (props) => {
+  const navigate = useNavigate();
+  const navigateAboutMe = () => {
+    // 👇️ navigate to /
+    navigate('/about');
+  }
+  const navigatePortfolio = () => {
+    // 👇️ navigate to /
+    navigate('/portfolio');
+  }
+
   return (
     <div className="w-full h-full ">
       <div className="bg-white border rounded-t-md">
@@ -21,8 +32,8 @@ const LandingPage: React.FunctionComponent = (props) => {
       <div className="bg-[#fbbbc9] border rounded-b-md border-[#fbbbc9]">
         {/* Content */}
         <div className="flex items-center justify-around p-5 font-amatic text-8xl">
-          <div className="transition duration-500 hover:scale-110">My Art</div>
-          <div className="transition duration-500 hover:scale-110">About Me</div>
+          <div onClick={navigatePortfolio}  className="transition duration-500 hover:scale-110">My Art</div>
+          <div onClick={navigateAboutMe} className="transition duration-500 hover:scale-110">About Me</div>
           <div className="transition duration-500 hover:scale-110">Store</div>
         </div>
       </div>
@@ -48,9 +59,21 @@ const LandingPage: React.FunctionComponent = (props) => {
             id="image_container_three"
             className="transition duration-100 hover:scale-105 p-20 flex items-center justify-around w-[92%] h-[100%] bg-white -top-[295px] rounded-lg  left-20">
             <img className="object-contain rounded-lg" src={art3} alt={"banner"} />
-          </div></div>
+          
       </div>
-      <div className='w-full m-5'>TEST</div>
+      </div></div>
+      <div>
+        <div className="flex items-center justify-around  h-[1000px] p-5 font-amatic">
+          <img className="object-fill rounded-full h-[800px] w-[800px]" src={art3} alt={"banner"} />
+          <div className="p-5 space-y-10">
+            <div className=' text-8xl'>Hey I'm Kitty</div>
+            <div className='text-6xl'>This is a bunch of filler text to fill in later with a nice bio of what katie wants to say</div>
+            <button onClick={navigateAboutMe} className='transition duration-1000 hover:scale-150 shadow-md  w-[300px] h-[100px] bg-white border-2 rounded-full border-[#fa8aa0]'>
+              <div className='text-6xl font-amatic'>About Me</div>
+            </button>
+          </div>
+        </div>
+      </div>
     </div>
   )
 }
