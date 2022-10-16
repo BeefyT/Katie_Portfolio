@@ -15,13 +15,17 @@ const AboutMe: React.FunctionComponent = (props) => {
   const navigateHome = () => {
     // 👇️ navigate to /
     navigate('/');
+  }
+  const myArt = () => {
+    // 👇️ navigate to /
+    navigate('/portfolio');
   };
 
   return (
     <div className='space-y-10'>
       <div className='bg-[#fbbbc9] border-[#fbbbc9]'>
         <div className="flex items-center justify-around p-5 space-x-20 text-6xl font-amatic">
-          <div className="transition duration-500 hover:scale-110">My Art</div>
+          <div onClick={myArt} className="transition duration-500 hover:scale-110">My Art</div>
           <div onClick={navigateHome} className="transition duration-500 hover:scale-110">Home</div>
           <div className="transition duration-500 hover:scale-110">Store</div>
         </div>
@@ -48,7 +52,7 @@ const AboutMe: React.FunctionComponent = (props) => {
                 className="accordion-title"
                 onClick={() => setMyHeroAccordioOpen(!myHeroAccordionOpen)}
               >
-                <div className='flex items-center justify-between'><div></div><div className='text-center text-7xl font-amatic border-1'>My Hero</div><div className='p-4'><FaPlus /></div></div>
+                <div className='flex items-center justify-between'><div></div><div className='text-center text-7xl font-amatic border-1'>My Hero</div><div className='p-4'></div></div>
               </div>
               {myHeroAccordionOpen && <div className="accordion-content">
                 <div className='text-4xl font-amatic bg-white border rounded-md border-[#fbbbc9] p-4'>My favorite character is bakugo, he is so dreamy and I love him. His power is way cool!</div></div>}
@@ -60,7 +64,7 @@ const AboutMe: React.FunctionComponent = (props) => {
                 className="accordion-title"
                 onClick={() => setMyPonyOpen(!myPonyOpen)}
               >
-                <div className='flex items-center justify-between'><div></div><div className='text-center text-7xl font-amatic border-1'>My Little Pony</div><div className='p-4'><FaPlus /></div></div>
+                <div className='flex items-center justify-between'><div></div><div className='text-center text-7xl font-amatic border-1'>My Little Pony</div><div className='p-4'></div></div>
               </div>
               {myPonyOpen && <div className="accordion-content">
                 <div className='text-4xl font-amatic bg-white border rounded-md border-[#fbbbc9] p-4'>I love my little pony and love getting my brother to watch it and getting my mom angry</div></div>}
@@ -72,7 +76,7 @@ const AboutMe: React.FunctionComponent = (props) => {
                 className="accordion-title"
                 onClick={() => setLadyBugOpen(!ladyBugOpen)}
               >
-                <div className='flex items-center justify-between'><div></div><div className='text-center text-7xl font-amatic border-1'>Lady Bug</div><div className='p-4'><FaPlus /></div></div>
+                <div className='flex items-center justify-between'><div></div><div className='text-center text-7xl font-amatic border-1'>Lady Bug</div><div className='p-4'></div></div>
               </div>
               {ladyBugOpen && <div className="accordion-content">
                 <div className='text-4xl font-amatic bg-white border rounded-md border-[#fbbbc9] p-4'>My favorite character is bakugo, he is so dreamy and I love him. His power is way cool!</div></div>}
