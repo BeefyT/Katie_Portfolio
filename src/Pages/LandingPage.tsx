@@ -17,9 +17,13 @@ const LandingPage: React.FunctionComponent = (props) => {
     // 👇️ navigate to /
     navigate('/portfolio');
   }
+  const navigateContactMe = () => {
+    // 👇️ navigate to /
+    navigate('/contact');
+  }
 
   return (
-    <div className="w-full h-full ">
+    <div className="w-full h-full p-5">
       <div className="bg-white border rounded-t-md">
         {/* BANNER */}
         <div className="relative">
@@ -34,6 +38,7 @@ const LandingPage: React.FunctionComponent = (props) => {
         <div className="flex items-center justify-around p-5 font-amatic text-8xl">
           <div onClick={navigatePortfolio} className="transition duration-500 hover:scale-110">My Art</div>
           <div onClick={navigateAboutMe} className="transition duration-500 hover:scale-110">About Me</div>
+          <div onClick={navigateContactMe} className="transition duration-500 hover:scale-110">Contact Me</div>
           <div className="transition duration-500 hover:scale-110">Store</div>
         </div>
       </div>

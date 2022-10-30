@@ -38,6 +38,10 @@ const Portfolio: React.FunctionComponent = (props) => {
     // 👇️ navigate to /
     navigate('/about');
   }
+  const navigateContactMe = () => {
+    // 👇️ navigate to /
+    navigate('/contact');
+  }
 
   useEffect(()=>{
     console.log(isImageViwerActive)
@@ -47,24 +51,25 @@ const Portfolio: React.FunctionComponent = (props) => {
 
   return (
     <div className=''>
-      <div className='bg-[#fbbbc9] border-[#fbbbc9]'>
+      <div className='bg-[#fbbbc9] border-[#fbbbc9] sticky z-50 top-0 shadow-lg'>
         <div className="flex items-center justify-around p-5 space-x-20 text-6xl font-amatic">
-          <div  onClick={aboutMe} className="transition duration-500 hover:scale-110">About Me</div>
           <div onClick={navigateHome} className="transition duration-500 hover:scale-110">Home</div>
+          <div  onClick={aboutMe} className="transition duration-500 hover:scale-110">About Me</div>
+          <div onClick={navigateContactMe} className="transition duration-500 hover:scale-110">Contact Me</div>
           <div className="transition duration-500 hover:scale-110">Store</div>
         </div>
       </div>
-      <div className='relative'>
+      <div className='relative p-5'>
         <div className="grid grid-cols-3 gap-4 p-5 lg:grid-cols-3 sm:grid-cols-2">
           {art.map((piece, index) => (
             <img onClick={() => {
               setSelectedPiece(piece)
               setIsImageViwerActive(true)
-            }} key={index} className={`object-cover w-full h-full transition duration-1000 hover:scale-100 scale-95`} src={piece.image} alt={piece.alt} />
+            }} key={index} className={`object-cover w-full h-full transition duration-1000 hover:scale-100 scale-95 shadow-lg`} src={piece.image} alt={piece.alt} />
           ))}
         </div>
         {/* VIEWER */}
-        {isImageViwerActive && <div><ImageViewer isActive={isImageViwerActive} setIsActive={setIsImageViwerActive} selectedImage={selectedPiece ? selectedPiece : undefined} /></div>}
+        {isImageViwerActive && <div className='relative'><ImageViewer isActive={isImageViwerActive} setIsActive={setIsImageViwerActive} selectedImage={selectedPiece ? selectedPiece : undefined} /></div>}
 
       </div>
 
@@ -93,7 +98,7 @@ const ImageViewer = (props: ImageViwerProps) => {
   })
 
   return (
-    <div  className='fixed z-10 w-screen h-screen transform -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2 bg-slate-200/50'>
+    <div  className='fixed z-[100] w-screen h-screen transform -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2 bg-slate-200/50'>
       <div className='absolute z-20 w-3/4 transform -translate-x-1/2 -translate-y-1/2 bg-white border-2 border-[#F996AA] rounded-xl h-5/6 top-1/2 left-1/2 drop-shadow-2xl'>
         
         <div ref={ref} className='flex items-center justify-around w-full h-full'>
@@ -102,6 +107,7 @@ const ImageViewer = (props: ImageViwerProps) => {
 
           </div>
           <div className='flex flex-col w-1/3 h-full p-5 space-y-2 bg-[#fbbbc9] rounded-tr-xl rounded-br-xl'>
+            <button onClick={()=>{props.setIsActive(false)}} className='absolute text-4xl font-bold top-3 right-4 font-amatic'>x</button>
             <div className='font-bold text-8xl font-amatic'>{props.selectedImage?.name}</div>
             <div className='text-4xl font-amatic'>This is an image that I drew after watching an episode of my little pony! I was wondering what rainbow dash would look like if she was a human and I started drawing and came out with this awesome piece!</div>
             <div className='grow'></div>

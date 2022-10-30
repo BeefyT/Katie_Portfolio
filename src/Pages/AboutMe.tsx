@@ -1,7 +1,7 @@
-import React, { useState } from "react"
+import React, { useState,useRef } from "react"
 import art3 from "../assets/images/image_6.jpg"
-import { FaPlus } from 'react-icons/fa'
 import { useNavigate } from "react-router-dom"
+import useOutsideClick from "../hooks/useOutsideClick"
 
 
 
@@ -19,14 +19,34 @@ const AboutMe: React.FunctionComponent = (props) => {
   const myArt = () => {
     // 👇️ navigate to /
     navigate('/portfolio');
-  };
+  }
+  const navigateContactMe = () => {
+    // 👇️ navigate to /
+    navigate('/contact');
+  }
+
+  const myHeroRef = useRef(null)
+  useOutsideClick(myHeroRef, () => {
+    setMyHeroAccordioOpen(false)
+  })
+
+  const myLittleRef = useRef(null)
+  useOutsideClick(myLittleRef, () => {
+    setMyPonyOpen(false)
+  })
+
+  const ladyBugRef = useRef(null)
+  useOutsideClick(ladyBugRef, () => {
+    setLadyBugOpen(false)
+  })
 
   return (
-    <div className='space-y-10'>
-      <div className='bg-[#fbbbc9] border-[#fbbbc9]'>
+    <div className='space-y-10 '>
+      <div className='bg-[#fbbbc9] border-[#fbbbc9] sticky top-0 z-50 shadow-lg'>
         <div className="flex items-center justify-around p-5 space-x-20 text-6xl font-amatic">
-          <div onClick={myArt} className="transition duration-500 hover:scale-110">My Art</div>
           <div onClick={navigateHome} className="transition duration-500 hover:scale-110">Home</div>
+          <div onClick={myArt} className="transition duration-500 hover:scale-110">My Art</div>
+          <div onClick={navigateContactMe} className="transition duration-500 hover:scale-110">Contact Me</div>
           <div className="transition duration-500 hover:scale-110">Store</div>
         </div>
       </div>
@@ -38,7 +58,7 @@ const AboutMe: React.FunctionComponent = (props) => {
             <div className='text-center text-9xl font-amatic'>Hey I'm Kitty, come get to know me!</div>
             <div className='text-4xl font-amatic'>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Feugiat nibh sed pulvinar proin gravida hendrerit. Mauris in aliquam sem fringilla ut morbi tincidunt. Sit amet consectetur adipiscing elit duis tristique sollicitudin. Mauris commodo quis imperdiet massa. Felis donec et odio pellentesque diam volutpat commodo. Elit scelerisque mauris pellentesque pulvinar pellentesque habitant morbi tristique. Integer eget aliquet nibh praesent tristique magna sit amet purus. Cras semper auctor neque vitae. Tincidunt augue interdum velit euismod in pellentesque. Gravida rutrum quisque non tellus orci ac auctor augue mauris. Sed adipiscing diam donec adipiscing tristique risus nec. Ut pharetra sit amet aliquam. Purus sit amet luctus venenatis lectus magna fringilla urna porttitor. Elementum tempus egestas sed sed risus pretium quam. Viverra nibh cras pulvinar mattis nunc sed. Tempor commodo ullamcorper a lacus. Vel fringilla est ullamcorper eget nulla facilisi etiam dignissim. Est velit egestas dui id ornare arcu odio. Felis eget velit aliquet sagittis id.
 
-</div>
+            </div>
 
           </div>
         </div>
@@ -46,7 +66,7 @@ const AboutMe: React.FunctionComponent = (props) => {
           <div className='text-center text-9xl font-amatic'>
             My Passions
           </div>
-          <div className="accordion bg-[#fbbbc9] border rounded-md border-[#fbbbc9]">
+          <div ref={myHeroRef} className="accordion bg-[#fbbbc9] border rounded-md border-[#fbbbc9] shadow-lg">
             <div className="accordion-item">
               <div
                 className="accordion-title"
@@ -58,7 +78,7 @@ const AboutMe: React.FunctionComponent = (props) => {
                 <div className='text-4xl font-amatic bg-white border rounded-md border-[#fbbbc9] p-4'>My favorite character is bakugo, he is so dreamy and I love him. His power is way cool!</div></div>}
             </div>
           </div>
-          <div className="accordion bg-[#fbbbc9] border rounded-md border-[#fbbbc9]">
+          <div ref={myLittleRef} className="accordion bg-[#fbbbc9] border rounded-md border-[#fbbbc9] shadow-lg">
             <div className="accordion-item">
               <div
                 className="accordion-title"
@@ -70,7 +90,7 @@ const AboutMe: React.FunctionComponent = (props) => {
                 <div className='text-4xl font-amatic bg-white border rounded-md border-[#fbbbc9] p-4'>I love my little pony and love getting my brother to watch it and getting my mom angry</div></div>}
             </div>
           </div>
-          <div className="accordion bg-[#fbbbc9] border rounded-md border-[#fbbbc9]">
+          <div ref={ladyBugRef} className="accordion bg-[#fbbbc9] border rounded-md border-[#fbbbc9] shadow-lg">
             <div className="accordion-item">
               <div
                 className="accordion-title"
